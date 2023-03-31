@@ -57,14 +57,13 @@ def xls_parser(workdook=WORKBOOK_DEFAULT, db=DB_DEFAULT):
                                fact_qliq_total, fact_qoil_total)
 
     last_lines_from_db = []
-    for i_company in company_names:
-        for i_date in dates:
-            last_row = select(xls_db.XlsTable).where(
-                                                    xls_db.XlsTable.date.is_(i_date),
-                                                    xls_db.XlsTable.company.in_([i_company])
-                                                    ).order_by(desc(xls_db.XlsTable.id)).limit(1)
-            last_line_from = list(xls_db.session.scalars(last_row))
-            last_lines_from_db.append(last_line_from)
+    # for i_company in company_names:
+    for i_date in dates:
+        last_row = select(xls_db.XlsTable).where(
+                                                xls_db.XlsTable.date.is_(i_date)
+                                                ).order_by(desc(xls_db.XlsTable.id)).limit(2)
+        last_lines = list(xls_db.session.scalars(last_row))
+        last_lines_from_db += last_lines
 
     return last_lines_from_db
 
@@ -84,7 +83,14 @@ if __name__ == '__main__':
     except IndexError:
         total = xls_parser(WORKBOOK_DEFAULT, DB_DEFAULT)
     for i in total:
-        print(f'Компания: {list(i)[0].company}, '
-              f'Дата: {list(i)[0].date}, '
-              f'Fact_QLiq_Total: {list(i)[0].total_qliq}, '
-              f'Fact_QOil_Total:{list(i)[0].total_qoil}')
+        print(f'Компания: {i.company}, '
+              f'Дата: {i.date}, '
+              f'Fact_QLiq_Total: {i.total_qliq}, '
+              f'Fact_QOil_Total:{i.total_qoil}')
+    # для вывода в обратном порядке
+    # while len(total):
+    #     i = total.pop()
+    #     print(f'Компания: {i.company}, '
+    #       f'Дата: {i.date}, '
+    #       f'Fact_QLiq_Total: {i.total_qliq}, '
+    #       f'Fact_QOil_Total:{i.total_qoil}')
