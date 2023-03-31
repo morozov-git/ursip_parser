@@ -1,0 +1,6 @@
+# Project exclude paths
+/venv/
+/main_v0.1.py
+/xls_db.db3
+/xls_db_test.py
+/~$base_data.xlsx
