@@ -4,6 +4,7 @@ from sqlalchemy.orm import DeclarativeBase, Session, Mapped, mapped_column
 from sqlalchemy.dialects.sqlite import DATE
 import datetime
 
+""" Module for connect to DB """
 
 class Base(DeclarativeBase):
     pass

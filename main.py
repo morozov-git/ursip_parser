@@ -5,6 +5,8 @@ from variables import WORKBOOK_DEFAULT, DB_DEFAULT, DATE1_DEFAULT, DATE2_DEFAULT
 from xls_load import row_gen
 from xls_db import XlsStorage
 
+""" Main module for start XLSX_Parser """
+
 def xls_parser(workdook=WORKBOOK_DEFAULT, db=DB_DEFAULT):
     current_data, date1, date2 = row_gen(workdook)
     xls_db = XlsStorage(db)

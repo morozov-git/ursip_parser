@@ -4,6 +4,9 @@ from openpyxl import load_workbook
 from variables import WORKBOOK_DEFAULT, SHEET_RANGE_MAX_DEFAULT as max_range, SHEET_RANGE_MIN_DEFAULT as min_range
 
 
+""" Module for load data from XLSX file """
+
+
 def row_gen(load_file=WORKBOOK_DEFAULT, sheet_range_min=min_range, sheet_range_max=max_range):
     """ Генератор строки из таблицы с данными """
 
