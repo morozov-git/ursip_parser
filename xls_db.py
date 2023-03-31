@@ -6,6 +6,7 @@ import datetime
 
 """ Module for connect to DB """
 
+
 class Base(DeclarativeBase):
     pass
 
@@ -40,14 +41,17 @@ class XlsStorage:
     def add_row(self, xls_id, company, fact_qliq, fact_qoil, forecast_qliq,
                 forecast_qoil, date, total_qliq, total_qoil):
         self.session = Session(self.database_engine)
-        row = self.XlsTable(xls_id=xls_id, company=company, fact_qliq=fact_qliq, fact_qoil=fact_qoil,
-                                forecast_qliq=forecast_qliq, forecast_qoil=forecast_qoil, date=date,
-                                total_qliq=total_qliq, total_qoil=total_qoil)
+        row = self.XlsTable(xls_id=xls_id,
+                            company=company,
+                            fact_qliq=fact_qliq,
+                            fact_qoil=fact_qoil,
+                            forecast_qliq=forecast_qliq,
+                            forecast_qoil=forecast_qoil,
+                            date=date,
+                            total_qliq=total_qliq,
+                            total_qoil=total_qoil)
         self.session.add_all([row])
         self.session.commit()
-
-
-
 
 
 if __name__ == '__main__':

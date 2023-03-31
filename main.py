@@ -7,6 +7,7 @@ from xls_db import XlsStorage
 
 """ Main module for start XLSX_Parser """
 
+
 def xls_parser(workdook=WORKBOOK_DEFAULT, db=DB_DEFAULT):
     current_data, date1, date2 = row_gen(workdook)
     xls_db = XlsStorage(db)
@@ -58,13 +59,15 @@ def xls_parser(workdook=WORKBOOK_DEFAULT, db=DB_DEFAULT):
     last_lines_from_db = []
     for i_company in company_names:
         for i_date in dates:
-            last_row= select(xls_db.XlsTable).where(xls_db.XlsTable.date.is_(i_date),
+            last_row = select(xls_db.XlsTable).where(
+                                                    xls_db.XlsTable.date.is_(i_date),
                                                     xls_db.XlsTable.company.in_([i_company])
-                                                      ).order_by(desc(xls_db.XlsTable.id)).limit(1)
+                                                    ).order_by(desc(xls_db.XlsTable.id)).limit(1)
             last_line_from = list(xls_db.session.scalars(last_row))
             last_lines_from_db.append(last_line_from)
 
     return last_lines_from_db
+
 
 if __name__ == '__main__':
     """ 
@@ -75,14 +78,13 @@ if __name__ == '__main__':
 
     param = argv
     try:
-        argv[1], argv[2]
+        var = argv[1], argv[2]
         print(f'Параметры запуска: {param}')
         total = xls_parser(argv[1], argv[2])
-    except:
+    except IndexError:
         total = xls_parser(WORKBOOK_DEFAULT, DB_DEFAULT)
     for i in total:
         print(f'Компания: {list(i)[0].company}, '
               f'Дата: {list(i)[0].date}, '
               f'Fact_QLiq_Total: {list(i)[0].total_qliq}, '
               f'Fact_QOil_Total:{list(i)[0].total_qoil}')
-
