@@ -1,17 +1,17 @@
 """ DEFAULT VARIABES """
-# Файл с данными
+# Data file
 WORKBOOK_DEFAULT = 'base_data.xlsx'
 
-# Диапазон данных для загрузки (без шапки таблицы)
-# Начало диапазона
+# Data range to load (no table header)
+# Range start
 SHEET_RANGE_MIN_DEFAULT = 'A4'
-# Конец диапазона (Если в файле закончатся строки раньше чем будет достигнут указанный
-# параметр, то выполнение программы остановится на максимальном значении из файла)
+# End of range (If the file runs out of lines before the specified
+# parameter, then program execution will stop at the maximum value from the file)
 SHEET_RANGE_MAX_DEFAULT = 'J23'
 
-# Дата
+# Date
 DATE1_DEFAULT = 'data1'
 DATE2_DEFAULT = 'data2'
 
-# База данных
+# Database
 DB_DEFAULT = 'xls_db.db3'

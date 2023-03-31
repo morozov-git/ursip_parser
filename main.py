@@ -70,24 +70,24 @@ def xls_parser(workdook=WORKBOOK_DEFAULT, db=DB_DEFAULT):
 
 if __name__ == '__main__':
     """ 
-    Для запуска через коммандную строку:
-        - Обычный запуск: python main.py
-        - Запуск с параметрами: python main.py base_data.xlsx xls_db.db3
+    To run via command line:
+         - Normal run: python main.py
+         - Run with parameters: python main.py base_data.xlsx xls_db.db3
     """
 
     param = argv
     try:
         var = argv[1], argv[2]
-        print(f'Параметры запуска: {param}')
+        print(f'Parameters: {param}')
         total = xls_parser(argv[1], argv[2])
     except IndexError:
         total = xls_parser(WORKBOOK_DEFAULT, DB_DEFAULT)
     for i in total:
-        print(f'Компания: {i.company}, '
-              f'Дата: {i.date}, '
+        print(f'Company: {i.company}, '
+              f'Date: {i.date}, '
               f'Fact_QLiq_Total: {i.total_qliq}, '
               f'Fact_QOil_Total:{i.total_qoil}')
-    # для вывода в обратном порядке
+    # to output in reverse order
     # while len(total):
     #     i = total.pop()
     #     print(f'Компания: {i.company}, '

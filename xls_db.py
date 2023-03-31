@@ -12,7 +12,7 @@ class Base(DeclarativeBase):
 
 
 class XlsStorage:
-    """ Класс оболочка для работы с базой данных """
+    """ Database class """
     class XlsTable(Base):
         __tablename__ = "xls_data"
         id: Mapped[int] = mapped_column(primary_key=True)
