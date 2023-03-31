@@ -5,6 +5,7 @@ from variables import WORKBOOK_DEFAULT, SHEET_RANGE_MAX_DEFAULT as max_range, SH
 
 """ Module for load data from XLSX file """
 
+
 def row_gen(load_file=WORKBOOK_DEFAULT, sheet_range_min=min_range, sheet_range_max=max_range):
     """ Row generator from data table """
     workbook = load_workbook(load_file, read_only=True, data_only=True)
