@@ -80,9 +80,9 @@ if __name__ == '__main__':
         total = xls_parser(argv[1], argv[2])
     except:
         total = xls_parser(WORKBOOK_DEFAULT, DB_DEFAULT)
-    total = xls_parser('base_data.xlsx')
     for i in total:
         print(f'Компания: {list(i)[0].company}, '
               f'Дата: {list(i)[0].date}, '
               f'Fact_QLiq_Total: {list(i)[0].total_qliq}, '
               f'Fact_QOil_Total:{list(i)[0].total_qoil}')
+
